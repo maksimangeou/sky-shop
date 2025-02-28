@@ -2,10 +2,9 @@ package org.skypro.sky.shop.model.service;
 
 import org.skypro.sky.shop.model.article.Article;
 import org.skypro.sky.shop.model.product.Product;
+import org.skypro.sky.shop.model.search.Searchable;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 public class StorageService {
     private final Map<UUID, Product> product;
@@ -22,5 +21,12 @@ public class StorageService {
 
     public Map<UUID, Article> getArticle() {
         return article;
+    }
+
+    public Map<UUID, Product> showAllCollection() {
+        Map <UUID, Product> mapLocal = null;
+        for (Product valueProduct : product.values()) {
+            valueProduct.toString();
+        }
     }
 }
