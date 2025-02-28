@@ -7,7 +7,7 @@ public class SimpleProduct extends Product {
     private double price;
     private final UUID id;
 
-    public SimpleProduct(String name, int price, UUID id) {
+    public SimpleProduct(UUID id, String name, int price) {
         super(name);
         this.id = id;
         try {
