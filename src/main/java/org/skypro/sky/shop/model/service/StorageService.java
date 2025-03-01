@@ -55,4 +55,10 @@ public class StorageService {
         List<Searchable> list = new ArrayList<>(article.values());
         return list;
     }
+
+    public List<Searchable> getAllCollection() {
+        List<Searchable> fullList = new ArrayList<>(getAllProducts());
+        fullList.addAll(getAllArticles());
+        return fullList;
+    }
 }

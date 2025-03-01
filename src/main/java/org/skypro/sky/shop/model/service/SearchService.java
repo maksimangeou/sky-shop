@@ -1,10 +1,11 @@
 package org.skypro.sky.shop.model.service;
 
+import org.skypro.sky.shop.model.search.SearchResult;
 import org.skypro.sky.shop.model.search.Searchable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class SearchService {
@@ -14,9 +15,15 @@ public class SearchService {
         this.storageService = storageService;
     }
 
-    public List<Searchable> getAllCollection() {
-        List<Searchable> fullList = new ArrayList<>(storageService.getAllProducts());
-        fullList.addAll(storageService.getAllArticles());
-        return fullList;
+    public Collection<SearchResult> search(String term) {
+        Collection<SearchResult> result = new ArrayList<>();
+        for (Searchable i : storageService.getAllCollection()) {
+            if (!i.searchTerm(term).equals(Searchable.CODE_NULL)) {
+                result.add((SearchResult) i);
+            }
+        }
+        return result;
     }
+
+
 }
