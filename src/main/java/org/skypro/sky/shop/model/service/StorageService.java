@@ -57,6 +57,7 @@ public class StorageService {
     public List<Searchable> getAllCollection() {
         List<Searchable> fullList = new ArrayList<>(getAllProducts());
         fullList.addAll(getAllArticles());
+        System.out.println(fullList);
         return fullList;
     }
 }

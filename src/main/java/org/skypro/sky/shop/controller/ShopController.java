@@ -35,7 +35,7 @@ public class ShopController {
     }
 
     @GetMapping("/search")
-    public Collection<SearchResult> getAllSearched(@RequestParam("pattern") String pattern) {
+    public Collection<Searchable> getAllSearched(@RequestParam("pattern") String pattern) {
         return searchService.search(pattern);
     }
 }

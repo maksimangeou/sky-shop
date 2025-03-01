@@ -10,9 +10,9 @@ public final class Article implements Searchable {
     private String text;
     private final UUID id;
 
-    public Article(UUID id, String title, String text) {
+    public Article(UUID id, String name, String text) {
         this.id = id;
-        this.name = title;
+        this.name = name;
         this.text = text;
     }
 
@@ -39,7 +39,7 @@ public final class Article implements Searchable {
 
     @Override
     public String toString() {
-        return id.toString() + '\n' + name + '\n' + text;
+        return name + '\n' + text;
     }
 
     @JsonIgnore
