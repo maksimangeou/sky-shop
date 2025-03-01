@@ -2,6 +2,7 @@ package org.skypro.sky.shop.model.service;
 
 import org.skypro.sky.shop.model.article.Article;
 import org.skypro.sky.shop.model.product.*;
+import org.skypro.sky.shop.model.search.Searchable;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -45,13 +46,13 @@ public class StorageService {
         return article;
     }
 
-    public List<Product> getAllProducts() {
-        List<Product> list = new ArrayList<>(product.values());
+    public List<Searchable> getAllProducts() {
+        List<Searchable> list = new ArrayList<>(product.values());
         return list;
     }
 
-    public List<Article> getAllArticles() {
-        List<Article> list = new ArrayList<>(article.values());
+    public List<Searchable> getAllArticles() {
+        List<Searchable> list = new ArrayList<>(article.values());
         return list;
     }
 }
