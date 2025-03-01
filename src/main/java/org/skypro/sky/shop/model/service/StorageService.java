@@ -2,15 +2,14 @@ package org.skypro.sky.shop.model.service;
 
 import org.skypro.sky.shop.model.article.Article;
 import org.skypro.sky.shop.model.product.*;
-import org.skypro.sky.shop.model.search.Searchable;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 @Service
 public class StorageService {
-    private final Map<UUID, Searchable> product;
-    private final Map<UUID, Searchable> article;
+    private final Map<UUID, Product> product;
+    private final Map<UUID, Article> article;
 
     public StorageService() {
         product = new HashMap<>();
@@ -33,27 +32,26 @@ public class StorageService {
         article.put(UUID.randomUUID(), new Article(UUID.randomUUID(),"Молоко2", "Лактоза2 - враг здоровью человека"));
         article.put(UUID.randomUUID(), new Article(UUID.randomUUID(),"Молоко3", "Лактоза3, Молоко - враг здоровью человека"));
         article.put(UUID.randomUUID(), new Article(UUID.randomUUID(), "Молоко4", "Лактоза4 - враг здоровью человека"));
-        Article article7 = new Article("Молоко5", "Лактоза5 - враг здоровью человека");
-        Article article8 = new Article("Молоко6", "Лактоза6 - враг здоровью человека");
-        Article article9 = new Article("Еще одна статья об апельсинах", "Текст два");
+        article.put(UUID.randomUUID(), new Article(UUID.randomUUID(),"Молоко5", "Лактоза5 - враг здоровью человека"));
+        article.put(UUID.randomUUID(), new Article(UUID.randomUUID(), "Молоко6", "Лактоза6 - враг здоровью человека"));
+        article.put(UUID.randomUUID(), new Article(UUID.randomUUID(),"Еще одна статья об апельсинах", "Текст два"));
     }
 
-    private void putValueArticle(Searchable searchable) {
-        product.put(UUID.randomUUID(), searchable);
-    }
-
-    public Map<UUID, Searchable> getProduct() {
+    public Map<UUID, Product> getProduct() {
         return product;
     }
 
-    public Map<UUID, Searchable> getArticle() {
+    public Map<UUID, Article> getArticle() {
         return article;
     }
 
-    public Map<UUID, Product> showAllCollection() {
-        Map<UUID, Product> mapLocal = null;
-        for (Product valueProduct : product.values()) {
-            valueProduct.toString();
-        }
+    public List<Product> getAllProducts() {
+        List<Product> list = new ArrayList<>(product.values());
+        return list;
+    }
+
+    public List<Article> getAllArticles() {
+        List<Article> list = new ArrayList<>(article.values());
+        return list;
     }
 }
