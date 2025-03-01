@@ -2,6 +2,7 @@ package org.skypro.sky.shop.model.article;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.skypro.sky.shop.model.search.Searchable;
+
 import java.util.Objects;
 import java.util.UUID;
 

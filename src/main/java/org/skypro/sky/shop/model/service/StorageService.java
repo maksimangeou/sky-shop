@@ -29,13 +29,13 @@ public class StorageService {
 
         article.put(UUID.randomUUID(), new Article(UUID.randomUUID(), "Польза апельсинов", "Текст номер 1 про апельсины"));
         article.put(UUID.randomUUID(), new Article(UUID.randomUUID(), "Садоводы и огородники", "Текст содержит в себе огурцы и помидоры"));
-        article.put(UUID.randomUUID(), new Article(UUID.randomUUID(),"Молоко1", "Лактоза1 - враг здоровью человека"));
-        article.put(UUID.randomUUID(), new Article(UUID.randomUUID(),"Молоко2", "Лактоза2 - враг здоровью человека"));
-        article.put(UUID.randomUUID(), new Article(UUID.randomUUID(),"Молоко3", "Лактоза3, Молоко - враг здоровью человека"));
+        article.put(UUID.randomUUID(), new Article(UUID.randomUUID(), "Молоко1", "Лактоза1 - враг здоровью человека"));
+        article.put(UUID.randomUUID(), new Article(UUID.randomUUID(), "Молоко2", "Лактоза2 - враг здоровью человека"));
+        article.put(UUID.randomUUID(), new Article(UUID.randomUUID(), "Молоко3", "Лактоза3, Молоко - враг здоровью человека"));
         article.put(UUID.randomUUID(), new Article(UUID.randomUUID(), "Молоко4", "Лактоза4 - враг здоровью человека"));
-        article.put(UUID.randomUUID(), new Article(UUID.randomUUID(),"Молоко5", "Лактоза5 - враг здоровью человека"));
+        article.put(UUID.randomUUID(), new Article(UUID.randomUUID(), "Молоко5", "Лактоза5 - враг здоровью человека"));
         article.put(UUID.randomUUID(), new Article(UUID.randomUUID(), "Молоко6", "Лактоза6 - враг здоровью человека"));
-        article.put(UUID.randomUUID(), new Article(UUID.randomUUID(),"Еще одна статья об апельсинах", "Текст два"));
+        article.put(UUID.randomUUID(), new Article(UUID.randomUUID(), "Еще одна статья об апельсинах", "Текст два"));
     }
 
     public Map<UUID, Product> getProduct() {
@@ -57,7 +57,6 @@ public class StorageService {
     public List<Searchable> getAllCollection() {
         List<Searchable> fullList = new ArrayList<>(getAllProducts());
         fullList.addAll(getAllArticles());
-        System.out.println(fullList);
         return fullList;
     }
 }

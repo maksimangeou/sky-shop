@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
+
 @RestController
 public class ShopController {
     private final StorageService storageService;
@@ -20,8 +21,8 @@ public class ShopController {
     }
 
     @GetMapping("/products")
-    public Collection<Searchable> getAllProducts(){
-        return  storageService.getAllProducts();
+    public Collection<Searchable> getAllProducts() {
+        return storageService.getAllProducts();
     }
 
     @GetMapping("/articles")
