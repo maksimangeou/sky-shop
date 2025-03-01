@@ -7,10 +7,10 @@ public class SearchResult {
     private final String name;
     private final String contentType;
 
-    public SearchResult(UUID id, String name, String contentType) {
-        this.id = id;
-        this.name = name;
-        this.contentType = contentType;
+    public SearchResult(Searchable searchable) {
+        this.id = searchable.getId();
+        this.name = searchable.getName();
+        this.contentType = searchable.getSearchedContent();
     }
 
     public UUID getId() {
@@ -25,7 +25,7 @@ public class SearchResult {
         return contentType;
     }
 
-    public static SearchResult fromSearchable(Searchable searchable) {
-        return new SearchResult(searchable.getId(),searchable.getName(), searchable.getSearchedContent());
-    }
+//    public static SearchResult fromSearchable(Searchable searchable) {
+//        return new SearchResult(searchable.getId(),searchable.getName(), searchable.getSearchedContent());
+//    }
 }

@@ -15,11 +15,11 @@ public class SearchService {
         this.storageService = storageService;
     }
 
-    public List<SearchResult> search(String term) {
-        List<SearchResult> result = new ArrayList<>();
+    public TreeSet<SearchResult> search(String term) {
         return storageService.getAllCollection().stream()
                 .filter(i -> !i.searchTerm(term).equals(Searchable.CODE_NULL))
-                .collect(Collectors.toCollection() - > new ArrayList<>());
+                .map(SearchResult::new)
+                .collect(Collectors.toCollection(TreeSet::new));
 
     }
 
