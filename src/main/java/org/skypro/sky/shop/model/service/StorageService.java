@@ -47,13 +47,11 @@ public class StorageService {
     }
 
     public List<Searchable> getAllProducts() {
-        List<Searchable> list = new ArrayList<>(product.values());
-        return list;
+        return new ArrayList<>(product.values());
     }
 
     public List<Searchable> getAllArticles() {
-        List<Searchable> list = new ArrayList<>(article.values());
-        return list;
+        return new ArrayList<>(article.values());
     }
 
     public List<Searchable> getAllCollection() {
