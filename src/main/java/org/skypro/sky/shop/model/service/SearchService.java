@@ -5,6 +5,7 @@ import org.skypro.sky.shop.model.search.Searchable;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class SearchService {
@@ -16,12 +17,10 @@ public class SearchService {
 
     public List<SearchResult> search(String term) {
         List<SearchResult> result = new ArrayList<>();
-        for(Searchable i : storageService.getAllCollection()) {
-            if (!i.searchTerm(term).equals(Searchable.CODE_NULL)) {
-                result.add(new SearchResult(i.getId(),i.getName(),i.getSearchedContent()));
-            }
-        }
-        return result;
+        return storageService.getAllCollection().stream()
+                .filter(i -> !i.searchTerm(term).equals(Searchable.CODE_NULL))
+                .collect(Collectors.toCollection() - > new ArrayList<>());
+
     }
 
 
