@@ -46,7 +46,7 @@ public class BasketService {
                 .stream()
                 .flatMap(valueQuality -> storageService.getAllProducts().stream()
                         .filter(i -> i.getId().equals(valueQuality.getKey()))
-                        .map(valueProduct -> new BasketItem((Product) valueProduct,valueQuality.getValue())))
+                        .map(valueProduct -> new BasketItem((Product) valueProduct, valueQuality.getValue())))
                 .collect(Collectors.toList());
         System.out.println(basketItems.toString());
         return new UserBasket(basketItems);

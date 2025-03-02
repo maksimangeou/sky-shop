@@ -20,7 +20,7 @@ public final class UserBasket {
 
     public double getTotalPrice() {
         return userBasket.stream()
-                .mapToDouble(i -> i.getProduct().getPrice()*i.getQuality())
+                .mapToDouble(i -> i.getProduct().getPrice() * i.getQuality())
                 .sum();
     }
 }
