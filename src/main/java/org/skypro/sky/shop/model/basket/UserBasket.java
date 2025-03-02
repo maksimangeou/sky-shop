@@ -18,16 +18,8 @@ public final class UserBasket {
         this.userBasket = userBasket;
     }
 
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
-    }
-
     public double getTotalPrice() {
-        return total = userBasket.stream()
+        return userBasket.stream()
                 .mapToDouble(i -> i.getProduct().getPrice()*i.getQuality())
                 .sum();
     }
