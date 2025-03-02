@@ -4,11 +4,8 @@ import org.skypro.sky.shop.model.basket.BasketItem;
 import org.skypro.sky.shop.model.basket.ProductBasket;
 import org.skypro.sky.shop.model.basket.UserBasket;
 import org.skypro.sky.shop.model.product.Product;
-import org.skypro.sky.shop.model.search.Searchable;
 import org.springframework.stereotype.Service;
-
 import java.util.*;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @Service
