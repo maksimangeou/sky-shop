@@ -8,7 +8,7 @@ public class DiscountedProduct extends Product {
     private int discountPercent;
     private final UUID id;
 
-    public DiscountedProduct(String name, double priceBase, int discountPercent, UUID id) {
+    public DiscountedProduct(UUID id, String name, double priceBase, int discountPercent) {
         super(name);
         this.id = id;
         try {

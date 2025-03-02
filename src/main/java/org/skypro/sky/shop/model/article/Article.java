@@ -1,17 +1,19 @@
 package org.skypro.sky.shop.model.article;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.skypro.sky.shop.model.search.Searchable;
+
 import java.util.Objects;
 import java.util.UUID;
 
 public final class Article implements Searchable {
-    private String title;
+    private String name;
     private String text;
     private final UUID id;
 
-    public Article(UUID id, String title, String text) {
+    public Article(UUID id, String name, String text) {
         this.id = id;
-        this.title = title;
+        this.name = name;
         this.text = text;
     }
 
@@ -20,12 +22,12 @@ public final class Article implements Searchable {
         return id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.name = title;
     }
 
     public String getText() {
@@ -38,17 +40,19 @@ public final class Article implements Searchable {
 
     @Override
     public String toString() {
-        return title + '\n' + text;
+        return name + '\n' + text;
     }
 
+    @JsonIgnore
     @Override
     public String searchTerm(String term) {
-        if (title.contains(term) || text.contains(term)) {
+        if (name.contains(term) || text.contains(term)) {
             return toString();
         }
         return CODE_NULL;
     }
 
+    @JsonIgnore
     @Override
     public String getSearchedContent() {
         return "ARTICLE";
@@ -58,11 +62,11 @@ public final class Article implements Searchable {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Article article = (Article) o;
-        return Objects.equals(title, article.title);
+        return Objects.equals(name, article.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title);
+        return Objects.hash(name);
     }
 }

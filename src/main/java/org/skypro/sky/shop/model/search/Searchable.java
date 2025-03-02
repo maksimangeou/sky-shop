@@ -12,9 +12,9 @@ public interface Searchable {
 
     UUID getId();
 
+    String getName();
+
     default String getStringRepresentation(String term) {
         return searchTerm(term) + '\n' + getSearchedContent();
     }
-
-
 }

@@ -7,7 +7,7 @@ public class FixPriceProduct extends Product {
     private static final double FIX_PRICE = 99.99;
     private final UUID id;
 
-    public FixPriceProduct(String name, UUID id) {
+    public FixPriceProduct(UUID id, String name) {
         super(name);
         this.id = id;
     }

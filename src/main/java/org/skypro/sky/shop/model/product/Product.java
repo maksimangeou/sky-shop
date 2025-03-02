@@ -1,6 +1,8 @@
 package org.skypro.sky.shop.model.product;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.skypro.sky.shop.model.search.Searchable;
+
 import java.util.Objects;
 
 public abstract class Product implements Searchable {
@@ -37,6 +39,7 @@ public abstract class Product implements Searchable {
         return name;
     }
 
+    @JsonIgnore
     @Override
     public String searchTerm(String term) {
         if (name.contains(term)) {
@@ -45,6 +48,7 @@ public abstract class Product implements Searchable {
         return CODE_NULL;
     }
 
+    @JsonIgnore
     @Override
     public String getSearchedContent() {
         return "PRODUCT";
