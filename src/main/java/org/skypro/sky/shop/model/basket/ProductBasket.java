@@ -22,8 +22,9 @@ public class ProductBasket {
     public void addProductInBasket(UUID id) {
         if (mapBasket.containsKey(id)) {
             mapBasket.put(id, mapBasket.get(id) + 1);
+        } else {
+            mapBasket.put(id, 1);
         }
-        mapBasket.put(id, 1);
     }
 
     public Map<UUID, Integer> getProductInBasket() {
