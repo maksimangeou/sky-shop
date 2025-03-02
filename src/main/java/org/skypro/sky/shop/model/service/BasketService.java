@@ -1,12 +1,15 @@
 package org.skypro.sky.shop.model.service;
 
+import org.skypro.sky.shop.model.basket.BasketItem;
 import org.skypro.sky.shop.model.basket.ProductBasket;
 import org.skypro.sky.shop.model.basket.UserBasket;
 import org.skypro.sky.shop.model.product.Product;
+import org.skypro.sky.shop.model.search.Searchable;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 @Service
 public class BasketService {
@@ -39,6 +42,11 @@ public class BasketService {
     }
 
     public UserBasket getUserBasket() {
-
+        List<BasketItem> basketItems = productBasket.getMapBasket().entrySet()
+                .stream()
+                .flatMap(valueQuality -> storageService.getAllProducts().stream()
+                        .map(valueProduct -> new BasketItem((Product) valueProduct,valueQuality.getValue())))
+                .collect(Collectors.toList());
+        return new UserBasket(basketItems);
     }
 }
