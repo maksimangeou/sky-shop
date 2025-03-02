@@ -45,8 +45,10 @@ public class BasketService {
         List<BasketItem> basketItems = productBasket.getMapBasket().entrySet()
                 .stream()
                 .flatMap(valueQuality -> storageService.getAllProducts().stream()
+                        .filter(i -> i.getId().equals(valueQuality.getKey()))
                         .map(valueProduct -> new BasketItem((Product) valueProduct,valueQuality.getValue())))
                 .collect(Collectors.toList());
+        System.out.println(basketItems.toString());
         return new UserBasket(basketItems);
     }
 }
