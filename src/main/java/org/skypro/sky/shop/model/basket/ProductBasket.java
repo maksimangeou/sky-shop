@@ -1,6 +1,5 @@
 package org.skypro.sky.shop.model.basket;
 
-import org.skypro.sky.shop.model.service.StorageService;
 import org.springframework.web.context.annotation.SessionScope;
 
 import java.util.Collections;

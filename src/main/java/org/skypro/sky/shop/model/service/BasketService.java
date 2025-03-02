@@ -1,6 +1,7 @@
 package org.skypro.sky.shop.model.service;
 
 import org.skypro.sky.shop.model.basket.ProductBasket;
+import org.skypro.sky.shop.model.basket.UserBasket;
 import org.skypro.sky.shop.model.product.Product;
 import org.springframework.stereotype.Service;
 
@@ -35,5 +36,9 @@ public class BasketService {
         } catch (IllegalArgumentException e) {
             System.out.println("Product is not available");
         }
+    }
+
+    public UserBasket getUserBasket() {
+
     }
 }
