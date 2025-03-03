@@ -4,7 +4,6 @@ import org.skypro.sky.shop.model.article.Article;
 import org.skypro.sky.shop.model.product.*;
 import org.skypro.sky.shop.model.search.Searchable;
 import org.springframework.stereotype.Service;
-
 import java.util.*;
 
 @Service
@@ -19,13 +18,20 @@ public class StorageService {
     }
 
     private void putValue() {
-        product.put(UUID.randomUUID(), new SimpleProduct(UUID.randomUUID(), "апельсин", 100));
-        product.put(UUID.randomUUID(), new SimpleProduct(UUID.randomUUID(), "огурцы", 199));
-        product.put(UUID.randomUUID(), new DiscountedProduct(UUID.randomUUID(), "помидоры", 200, 20));
-        product.put(UUID.randomUUID(), new DiscountedProduct(UUID.randomUUID(), "бананы", 249, 30));
-        product.put(UUID.randomUUID(), new FixPriceProduct(UUID.randomUUID(), "молоко"));
-        product.put(UUID.randomUUID(), new DiscountedProduct(UUID.randomUUID(), "шоколад", 39.99, 20));
-        product.put(UUID.randomUUID(), new DiscountedProduct(UUID.randomUUID(), "картофель", 59.99, 5));
+        UUID id1 = UUID.randomUUID();
+        UUID id2 = UUID.randomUUID();
+        UUID id3 = UUID.randomUUID();
+        UUID id4 = UUID.randomUUID();
+        UUID id5 = UUID.randomUUID();
+        UUID id6 = UUID.randomUUID();
+        UUID id7 = UUID.randomUUID();
+        product.put(id1, new SimpleProduct(id1, "апельсин", 100));
+        product.put(id2, new SimpleProduct(id2, "огурцы", 199));
+        product.put(id3, new DiscountedProduct(id3, "помидоры", 200, 20));
+        product.put(id4, new DiscountedProduct(id4, "бананы", 249, 30));
+        product.put(id5, new FixPriceProduct(id5, "молоко"));
+        product.put(id6, new DiscountedProduct(id6, "шоколад", 39.99, 20));
+        product.put(id7, new DiscountedProduct(id7, "картофель", 59.99, 5));
 
         article.put(UUID.randomUUID(), new Article(UUID.randomUUID(), "Польза апельсинов", "Текст номер 1 про апельсины"));
         article.put(UUID.randomUUID(), new Article(UUID.randomUUID(), "Садоводы и огородники", "Текст содержит в себе огурцы и помидоры"));
@@ -58,5 +64,9 @@ public class StorageService {
         List<Searchable> fullList = new ArrayList<>(getAllProducts());
         fullList.addAll(getAllArticles());
         return fullList;
+    }
+
+    public Optional<Product> getProductById(UUID id) {
+        return Optional.ofNullable(product.get(id));
     }
 }
