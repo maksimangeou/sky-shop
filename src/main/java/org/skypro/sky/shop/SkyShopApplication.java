@@ -9,5 +9,4 @@ public class SkyShopApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SkyShopApplication.class, args);
 	}
-
 }
