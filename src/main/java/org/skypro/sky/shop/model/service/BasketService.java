@@ -3,6 +3,7 @@ package org.skypro.sky.shop.model.service;
 import org.skypro.sky.shop.model.basket.BasketItem;
 import org.skypro.sky.shop.model.basket.ProductBasket;
 import org.skypro.sky.shop.model.basket.UserBasket;
+import org.skypro.sky.shop.model.exception.NoSuchProductException;
 import org.skypro.sky.shop.model.product.Product;
 import org.springframework.stereotype.Service;
 import java.util.*;
@@ -30,10 +31,10 @@ public class BasketService {
         try {
             Optional<Product> optionalProduct = storageService.getProductById(id);
             if (optionalProduct.isEmpty()) {
-                throw new IllegalArgumentException();
+                throw new NoSuchProductException();
             }
             productBasket.addProductInBasket(id);
-        } catch (IllegalArgumentException e) {
+        } catch (NoSuchProductException e) {
             System.out.println("Product is not available");
         }
     }
