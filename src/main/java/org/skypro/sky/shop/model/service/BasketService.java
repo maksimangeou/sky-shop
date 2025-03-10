@@ -6,6 +6,9 @@ import org.skypro.sky.shop.model.basket.UserBasket;
 import org.skypro.sky.shop.model.exception.NoSuchProductException;
 import org.skypro.sky.shop.model.product.Product;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -28,15 +31,11 @@ public class BasketService {
     }
 
     public void addProductIntoBasket(UUID id) {
-        try {
             Optional<Product> optionalProduct = storageService.getProductById(id);
             if (optionalProduct.isEmpty()) {
                 throw new NoSuchProductException();
             }
             productBasket.addProductInBasket(id);
-        } catch (NoSuchProductException e) {
-            System.out.println("Product is not available");
-        }
     }
 
     public UserBasket getUserBasket() {
