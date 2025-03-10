@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class ShopControllerAdvice {
 
     @ExceptionHandler(NoSuchProductException.class)
-    public ResponseEntity<ShopError> catchNoSuchProductException (NoSuchProductException e) {
-        return new ResponseEntity<>(new ShopError(Integer.toString(HttpStatus.NOT_FOUND.value()),e.getMessage()),HttpStatus.NOT_FOUND);
+    public ResponseEntity<ShopError> catchNoSuchProductException(NoSuchProductException e) {
+        return new ResponseEntity<>(new ShopError(Integer.toString(HttpStatus.NOT_FOUND.value()), e.getMessage()), HttpStatus.NOT_FOUND);
     }
 }

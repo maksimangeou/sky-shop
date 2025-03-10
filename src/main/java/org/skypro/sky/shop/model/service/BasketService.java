@@ -31,11 +31,11 @@ public class BasketService {
     }
 
     public void addProductIntoBasket(UUID id) {
-            Optional<Product> optionalProduct = storageService.getProductById(id);
-            if (optionalProduct.isEmpty()) {
-                throw new NoSuchProductException();
-            }
-            productBasket.addProductInBasket(id);
+        Optional<Product> optionalProduct = storageService.getProductById(id);
+        if (optionalProduct.isEmpty()) {
+            throw new NoSuchProductException();
+        }
+        productBasket.addProductInBasket(id);
     }
 
     public UserBasket getUserBasket() {
