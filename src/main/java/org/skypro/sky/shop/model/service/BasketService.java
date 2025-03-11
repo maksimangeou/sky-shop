@@ -33,7 +33,7 @@ public class BasketService {
     public void addProductIntoBasket(UUID id) {
         Optional<Product> optionalProduct = storageService.getProductById(id);
         if (optionalProduct.isEmpty()) {
-            throw new NoSuchProductException();
+            throw new NoSuchProductException(id);
         }
         productBasket.addProductInBasket(id);
     }
