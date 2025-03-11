@@ -3,8 +3,12 @@ package org.skypro.sky.shop.model.service;
 import org.skypro.sky.shop.model.basket.BasketItem;
 import org.skypro.sky.shop.model.basket.ProductBasket;
 import org.skypro.sky.shop.model.basket.UserBasket;
+import org.skypro.sky.shop.model.exception.NoSuchProductException;
 import org.skypro.sky.shop.model.product.Product;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -27,15 +31,11 @@ public class BasketService {
     }
 
     public void addProductIntoBasket(UUID id) {
-        try {
-            Optional<Product> optionalProduct = storageService.getProductById(id);
-            if (optionalProduct.isEmpty()) {
-                throw new IllegalArgumentException();
-            }
-            productBasket.addProductInBasket(id);
-        } catch (IllegalArgumentException e) {
-            System.out.println("Product is not available");
+        Optional<Product> optionalProduct = storageService.getProductById(id);
+        if (optionalProduct.isEmpty()) {
+            throw new NoSuchProductException(id);
         }
+        productBasket.addProductInBasket(id);
     }
 
     public UserBasket getUserBasket() {
