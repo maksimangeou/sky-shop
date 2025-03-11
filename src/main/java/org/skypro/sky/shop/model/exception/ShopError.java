@@ -1,8 +1,8 @@
 package org.skypro.sky.shop.model.exception;
 
 public final class ShopError {
-    String code;
-    String message;
+    private String code;
+    private String message;
 
     public ShopError(String code, String message) {
         this.code = code;
