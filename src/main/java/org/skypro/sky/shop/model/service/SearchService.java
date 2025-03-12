@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class SearchService {
     private final StorageService storageService;
 
-    public SearchService() {
+    public SearchService(StorageService storageService) {
         this.storageService = new StorageService();
     }
 
