@@ -45,7 +45,7 @@ public class BasketServiceTest {
     }
 
     @Test
-    void addProductIntoBasket_shouldCallAddProduct_whenProductExists() {
+    void givenProductIntoBasket_whenProductExists_thenCallAddProduct() {
         UUID productId = UUID.randomUUID();
         Product product = new SimpleProduct(productId, "Test Product", 100);
         when(storageService.getProductById(productId)).thenReturn(Optional.of(product));
@@ -56,7 +56,7 @@ public class BasketServiceTest {
     }
 
     @Test
-    void getUserBasket_shouldReturnEmptyBasket_whenProductBasketIsEmpty() {
+    void givenUserBasket_whenProductBasketIsEmpty_thenReturnEmptyBasket() {
         when(productBasket.getProductInBasket()).thenReturn(Collections.emptyMap());
 
         UserBasket userBasket = basketService.getUserBasket();
@@ -65,7 +65,7 @@ public class BasketServiceTest {
     }
 
     @Test
-    void getUserBasket_shouldReturnUserBasketWithItems_whenProductBasketHasItems() {
+    void givenUserBasket_whenProductBasketHasItems_thenReturnUserBasketWithItems() {
         UUID productId = UUID.randomUUID();
         Product product = new SimpleProduct(productId, "Test Product", 100);
         when(productBasket.getProductInBasket()).thenReturn(Collections.singletonMap(productId, 1));
