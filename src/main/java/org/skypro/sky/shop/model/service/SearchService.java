@@ -11,6 +11,10 @@ public class SearchService {
     private final StorageService storageService;
 
     public SearchService(StorageService storageService) {
+        this.storageService = storageService;
+    }
+
+    public SearchService() {
         this.storageService = new StorageService();
     }
 

@@ -1,18 +1,20 @@
 package org.skypro.sky.shop;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.skypro.sky.shop.model.product.SimpleProduct;
 import org.skypro.sky.shop.model.search.SearchResult;
 
+import org.skypro.sky.shop.model.search.Searchable;
 import org.skypro.sky.shop.model.service.SearchService;
 import org.skypro.sky.shop.model.service.StorageService;
 
 import java.util.*;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
@@ -31,35 +33,27 @@ public class SearchServiceTest {
         Collection<SearchResult> results = searchService.search(pattern);
         System.out.println(results);
 
-        assertTrue(results.isEmpty(), "Expected an empty result when storage is empty.");
+        assertTrue(results.isEmpty());
     }
 
     @Test
     public void givenSearchResult_whenSearchProductNotInStorage_thenEmptyResult() {
-        StorageService storageServiceMock = mock(StorageService.class);
-        SearchService searchService = new SearchService(storageServiceMock);
-        Mockito.when(storageServiceMock.getAllCollection()).thenReturn(Collections.emptyList());
-        searchService = new SearchService(storageServiceMock);
+        SearchService searchService = new SearchService();
         String pattern = "морковка";
 
-        Collection<SearchResult> result = searchService.search(pattern);
-        System.out.println(result);
+        Collection<SearchResult> results = searchService.search(pattern);
 
-        assertTrue(result.isEmpty());
+        assertTrue(results.isEmpty());
     }
 
     @Test
     public void givenSearch_whenMatchingProductExists_thenGetResult() {
-        StorageService storageServiceMock = mock(StorageService.class);
-        SearchService searchService = new SearchService(storageServiceMock);
-        Mockito.when(storageServiceMock.getAllCollection()).thenReturn(Collections.emptyList());
-        searchService = new SearchService(storageServiceMock);
+        SearchService searchService = new SearchService();
         String pattern = "апельсин";
 
-        Collection<SearchResult> result = searchService.search(pattern);
-        System.out.println(result);
+        Collection<SearchResult> results = searchService.search(pattern);
 
-        Assertions.assertFalse(result.isEmpty());
+        assertFalse(results.isEmpty());
     }
 
 }
