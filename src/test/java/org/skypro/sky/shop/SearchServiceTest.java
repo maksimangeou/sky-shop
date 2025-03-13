@@ -1,10 +1,10 @@
 package org.skypro.sky.shop;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.skypro.sky.shop.model.article.Article;
+import org.skypro.sky.shop.model.product.DiscountedProduct;
 import org.skypro.sky.shop.model.product.SimpleProduct;
 import org.skypro.sky.shop.model.search.SearchResult;
 
@@ -14,8 +14,7 @@ import org.skypro.sky.shop.model.service.StorageService;
 
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 
@@ -38,8 +37,13 @@ public class SearchServiceTest {
 
     @Test
     public void givenSearchResult_whenSearchProductNotInStorage_thenEmptyResult() {
-        SearchService searchService = new SearchService();
         String pattern = "морковка";
+        StorageService storageServiceMock = mock(StorageService.class);
+        SearchService searchService = new SearchService(storageServiceMock);
+        List<Searchable> items = Arrays.asList(new SimpleProduct(UUID.randomUUID(), "апельсин", 100),
+                new DiscountedProduct(UUID.randomUUID(), "шоколад", 39.99, 20),
+                new Article(UUID.randomUUID(), "Польза апельсинов", "Текст номер 1 про апельсины"));
+        when(storageServiceMock.getAllCollection()).thenReturn(items);
 
         Collection<SearchResult> results = searchService.search(pattern);
 
@@ -48,12 +52,18 @@ public class SearchServiceTest {
 
     @Test
     public void givenSearch_whenMatchingProductExists_thenGetResult() {
-        SearchService searchService = new SearchService();
         String pattern = "апельсин";
+        StorageService storageServiceMock = mock(StorageService.class);
+        SearchService searchService = new SearchService(storageServiceMock);
+        List<Searchable> items = Arrays.asList(new SimpleProduct(UUID.randomUUID(), "апельсин", 100),
+                new DiscountedProduct(UUID.randomUUID(), "шоколад", 39.99, 20),
+                new Article(UUID.randomUUID(), "Польза апельсинов", "Текст номер 1 про апельсины"));
+        when(storageServiceMock.getAllCollection()).thenReturn(items);
 
         Collection<SearchResult> results = searchService.search(pattern);
 
         assertFalse(results.isEmpty());
+        assertEquals(2, results.size());
     }
 
 }
