@@ -74,6 +74,6 @@ public class BasketServiceTest {
         UserBasket userBasket = basketService.getUserBasket();
 
         assertEquals(1, userBasket.getUserBasket().size());
-        assertEquals(productId, userBasket.getUserBasket().get(0).getProduct().getId());
+        assertEquals(productId, userBasket.getUserBasket().getFirst().getProduct().getId());
     }
 }
