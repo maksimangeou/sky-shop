@@ -3,6 +3,8 @@ package org.skypro.sky.shop;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.skypro.sky.shop.model.basket.ProductBasket;
@@ -21,16 +23,12 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class BasketServiceTest {
 
+    @Mock
     private ProductBasket productBasket;
+    @Mock
     private StorageService storageService;
+    @InjectMocks
     private BasketService basketService;
-
-    @BeforeEach
-    void setUp() {
-        productBasket = Mockito.mock(ProductBasket.class);
-        storageService = Mockito.mock(StorageService.class);
-        basketService = new BasketService(productBasket, storageService);
-    }
 
     @Test
     void givenNotExistProduct_whenPutProductInBasket_thenFailure() {

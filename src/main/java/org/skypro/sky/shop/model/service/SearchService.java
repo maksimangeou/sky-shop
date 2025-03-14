@@ -14,10 +14,6 @@ public class SearchService {
         this.storageService = storageService;
     }
 
-    public SearchService() {
-        this.storageService = new StorageService();
-    }
-
     public Collection<SearchResult> search(String pattern) {
         return storageService.getAllCollection().stream()
                 .filter(i -> !i.searchTerm(pattern).equals(Searchable.CODE_NULL))
