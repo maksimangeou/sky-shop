@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 public class SearchService {
     private final StorageService storageService;
 
-    public SearchService() {
-        this.storageService = new StorageService();
+    public SearchService(StorageService storageService) {
+        this.storageService = storageService;
     }
 
     public Collection<SearchResult> search(String pattern) {
